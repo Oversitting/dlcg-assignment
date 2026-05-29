@@ -24,7 +24,8 @@ public sealed class SaveVideoGameRequestValidator : AbstractValidator<SaveVideoG
             .MaximumLength(VideoGameConstraints.PlatformMaxLength);
 
         RuleFor(request => request.ReleaseYear)
-            .InclusiveBetween(VideoGameConstraints.MinReleaseYear, VideoGameConstraints.MaxReleaseYear);
+            .InclusiveBetween(VideoGameConstraints.MinReleaseYear, VideoGameConstraints.MaxReleaseYear)
+            .WithMessage($"Release year must be between {VideoGameConstraints.MinReleaseYear} and {VideoGameConstraints.MaxReleaseYear}.");
 
         RuleFor(request => request.Developer)
             .NotEmpty()
@@ -37,7 +38,8 @@ public sealed class SaveVideoGameRequestValidator : AbstractValidator<SaveVideoG
             .MaximumLength(VideoGameConstraints.PublisherMaxLength);
 
         RuleFor(request => request.CriticScore)
-            .InclusiveBetween(VideoGameConstraints.MinCriticScore, VideoGameConstraints.MaxCriticScore);
+            .InclusiveBetween(VideoGameConstraints.MinCriticScore, VideoGameConstraints.MaxCriticScore)
+            .WithMessage($"Critic score must be between {VideoGameConstraints.MinCriticScore} and {VideoGameConstraints.MaxCriticScore}.");
 
         RuleFor(request => request.Summary)
             .MaximumLength(VideoGameConstraints.SummaryMaxLength);

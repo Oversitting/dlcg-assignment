@@ -1,8 +1,25 @@
-.table th,
-.table td {
-  padding: 1rem 1.25rem;
-}
+.table {
+  th {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--catalogue-muted);
+    background: rgba(30, 45, 48, 0.035);
+    border-bottom: 1px solid var(--catalogue-border);
+  }
 
-.badge {
-  min-width: 5.5rem;
+  td {
+    padding: 1rem 1.25rem;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(30, 45, 48, 0.05);
+    transition: background 0.12s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 }

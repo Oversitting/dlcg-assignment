@@ -185,7 +185,7 @@ public sealed class VideoGameService : IVideoGameService
             (VideoGameBrowseOrderBy.CriticScore, false) => query.OrderBy(videoGame => videoGame.CriticScore).ThenBy(videoGame => videoGame.Id),
             (VideoGameBrowseOrderBy.UpdatedUtc, true) => query.OrderByDescending(videoGame => videoGame.UpdatedUtc).ThenBy(videoGame => videoGame.Id),
             (VideoGameBrowseOrderBy.UpdatedUtc, false) => query.OrderBy(videoGame => videoGame.UpdatedUtc).ThenBy(videoGame => videoGame.Id),
-            (VideoGameBrowseOrderBy.Title, true) => query.OrderByDescending(videoGame => videoGame.Title).ThenByDescending(videoGame => videoGame.Id),
+            (VideoGameBrowseOrderBy.Title, true) => query.OrderByDescending(videoGame => videoGame.Title).ThenBy(videoGame => videoGame.Id),
             _ => query.OrderBy(videoGame => videoGame.Title).ThenBy(videoGame => videoGame.Id),
         };
     }

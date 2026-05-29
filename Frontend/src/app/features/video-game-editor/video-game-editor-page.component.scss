@@ -1,7 +1,16 @@
 .form-control,
 .form-select {
-  border-radius: 0.9rem;
-  min-height: 3rem;
+  border-radius: 0.5rem;
+  min-height: 2.75rem;
+  border-color: rgba(30, 45, 48, 0.18);
+  background-color: rgba(255, 255, 255, 0.75);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:focus {
+    background-color: #fff;
+    border-color: var(--catalogue-accent);
+    box-shadow: 0 0 0 0.2rem rgba(163, 77, 45, 0.18);
+  }
 }
 
 textarea.form-control {

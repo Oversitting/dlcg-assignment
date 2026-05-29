@@ -1,11 +1,14 @@
 @use 'bootstrap/scss/bootstrap';
 
 :root {
-	--catalogue-ink: #243336;
-	--catalogue-muted: #6d7a78;
+	--catalogue-ink: #1e2d30;
+	--catalogue-muted: #5c6b6e;
 	--catalogue-accent: #a34d2d;
+	--catalogue-accent-hover: #8b3e22;
 	--catalogue-accent-soft: #d8b18a;
-	--catalogue-surface: rgba(255, 255, 255, 0.82);
+	--catalogue-surface: rgba(255, 255, 255, 0.88);
+	--catalogue-surface-alt: rgba(255, 255, 255, 0.55);
+	--catalogue-border: rgba(30, 45, 48, 0.1);
 }
 
 html,
@@ -17,9 +20,10 @@ body {
 	margin: 0;
 	color: var(--catalogue-ink);
 	background:
-		radial-gradient(circle at top left, rgba(163, 77, 45, 0.12), transparent 32%),
-		linear-gradient(180deg, #f8f6f1 0%, #efe8dd 100%);
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		radial-gradient(ellipse at top left, rgba(163, 77, 45, 0.1), transparent 40%),
+		radial-gradient(ellipse at bottom right, rgba(36, 51, 54, 0.06), transparent 40%),
+		linear-gradient(170deg, #f9f7f2 0%, #ede7dc 100%);
+	font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 button,
@@ -29,6 +33,25 @@ textarea {
 	font: inherit;
 }
 
+// Override Bootstrap's primary color to match the warm accent theme
+.btn-primary {
+	--bs-btn-bg: var(--catalogue-accent);
+	--bs-btn-border-color: var(--catalogue-accent);
+	--bs-btn-hover-bg: var(--catalogue-accent-hover);
+	--bs-btn-hover-border-color: var(--catalogue-accent-hover);
+	--bs-btn-active-bg: var(--catalogue-accent-hover);
+	--bs-btn-active-border-color: var(--catalogue-accent-hover);
+	--bs-btn-disabled-bg: var(--catalogue-accent);
+	--bs-btn-disabled-border-color: var(--catalogue-accent);
+	--bs-btn-focus-shadow-rgb: 163, 77, 45;
+}
+
+.form-control:focus,
+.form-select:focus {
+	border-color: var(--catalogue-accent);
+	box-shadow: 0 0 0 0.2rem rgba(163, 77, 45, 0.2);
+}
+
 .page-shell {
 	display: grid;
 	gap: 1.5rem;
@@ -36,9 +59,11 @@ textarea {
 
 .page-card {
 	background: var(--catalogue-surface);
-	border: 1px solid rgba(38, 52, 52, 0.08);
-	border-radius: 1.25rem;
-	box-shadow: 0 24px 60px rgba(36, 51, 54, 0.08);
+	border: 1px solid var(--catalogue-border);
+	border-radius: 1rem;
+	box-shadow:
+		0 1px 3px rgba(30, 45, 48, 0.06),
+		0 8px 32px rgba(30, 45, 48, 0.08);
 }
 
 .page-header {
@@ -51,13 +76,48 @@ textarea {
 
 .page-title {
 	margin: 0;
-	font-size: clamp(2rem, 3vw, 3.2rem);
+	font-size: clamp(1.75rem, 2.5vw, 2.6rem);
 	font-weight: 700;
-	letter-spacing: -0.05em;
+	letter-spacing: -0.04em;
+	color: var(--catalogue-ink);
 }
 
 .page-subtitle {
-	margin: 0.5rem 0 0;
+	margin: 0.4rem 0 0;
 	max-width: 52rem;
+	color: var(--catalogue-muted);
+	font-size: 0.95rem;
+}
+
+// Score badge helpers — color-coded by quality tier
+.score-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 5.25rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	padding: 0.28em 0.7em;
+	border-radius: 100px;
+}
+
+.score-badge-high {
+	background: #d4edda;
+	color: #1a5c2a;
+}
+
+.score-badge-mid {
+	background: #fff3cd;
+	color: #7a5a00;
+}
+
+.score-badge-low {
+	background: #f8d7da;
+	color: #8b2030;
+}
+
+.score-badge-none {
+	background: rgba(30, 45, 48, 0.08);
 	color: var(--catalogue-muted);
 }

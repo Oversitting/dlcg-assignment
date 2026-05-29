@@ -11,23 +11,30 @@
 	position: sticky;
 	top: 0;
 	z-index: 10;
-	backdrop-filter: blur(14px);
-	background: rgba(248, 246, 241, 0.9);
-	border-bottom: 1px solid rgba(38, 52, 52, 0.08);
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background: rgba(249, 247, 242, 0.92);
+	border-bottom: 1px solid rgba(30, 45, 48, 0.1);
+	box-shadow: 0 1px 0 rgba(30, 45, 48, 0.04), 0 2px 12px rgba(30, 45, 48, 0.06);
+	padding: 0.875rem 0;
 }
 
 .brand {
 	color: var(--catalogue-ink);
-	font-size: 1.65rem;
+	font-size: 1.5rem;
 	font-weight: 700;
-	letter-spacing: -0.03em;
+	letter-spacing: -0.04em;
 	text-decoration: none;
+
+	&:hover {
+		color: var(--catalogue-accent);
+	}
 }
 
 .eyebrow {
 	color: var(--catalogue-muted);
-	font-size: 0.78rem;
-	letter-spacing: 0.18em;
+	font-size: 0.7rem;
+	letter-spacing: 0.2em;
 	text-transform: uppercase;
 }
 
@@ -37,12 +44,23 @@
 
 .nav-pills .nav-link {
 	color: var(--catalogue-ink);
-	border: 1px solid rgba(38, 52, 52, 0.12);
-	background: rgba(255, 255, 255, 0.55);
+	font-size: 0.875rem;
+	font-weight: 500;
+	border: 1px solid rgba(30, 45, 48, 0.14);
+	background: rgba(255, 255, 255, 0.6);
+	padding: 0.4rem 1rem;
+	transition: all 0.15s ease;
+
+	&:hover:not(.active) {
+		background: rgba(255, 255, 255, 0.85);
+		border-color: rgba(163, 77, 45, 0.35);
+		color: var(--catalogue-accent);
+	}
 }
 
 .nav-pills .nav-link.active {
 	background: var(--catalogue-accent);
 	border-color: var(--catalogue-accent);
-	color: #f8f6f1;
+	color: #fff;
+	box-shadow: 0 2px 8px rgba(163, 77, 45, 0.35);
 }

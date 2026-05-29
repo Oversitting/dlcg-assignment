@@ -38,6 +38,8 @@
           <input id="title" class="form-control" type="text" formControlName="title" />
           @if (hasError('title', 'required')) {
             <div class="text-danger small mt-1">Title is required.</div>
+          } @else if (hasError('title', 'maxlength')) {
+            <div class="text-danger small mt-1">{{ maxLengthMessage('title', 'Title') }}</div>
           }
         </div>
 
@@ -46,6 +48,8 @@
           <input id="genre" class="form-control" type="text" formControlName="genre" />
           @if (hasError('genre', 'required')) {
             <div class="text-danger small mt-1">Genre is required.</div>
+          } @else if (hasError('genre', 'maxlength')) {
+            <div class="text-danger small mt-1">{{ maxLengthMessage('genre', 'Genre') }}</div>
           }
         </div>
 
@@ -54,12 +58,17 @@
           <input id="platform" class="form-control" type="text" formControlName="platform" />
           @if (hasError('platform', 'required')) {
             <div class="text-danger small mt-1">Platform is required.</div>
+          } @else if (hasError('platform', 'maxlength')) {
+            <div class="text-danger small mt-1">{{ maxLengthMessage('platform', 'Platform') }}</div>
           }
         </div>
 
         <div class="col-md-4">
           <label class="form-label" for="releaseYear">Release year</label>
           <input id="releaseYear" class="form-control" type="number" formControlName="releaseYear" min="1970" max="2100" />
+          @if (hasError('releaseYear', 'min') || hasError('releaseYear', 'max')) {
+            <div class="text-danger small mt-1">{{ releaseYearHint }}</div>
+          }
         </div>
 
         <div class="col-md-4">
@@ -67,6 +76,8 @@
           <input id="developer" class="form-control" type="text" formControlName="developer" />
           @if (hasError('developer', 'required')) {
             <div class="text-danger small mt-1">Developer is required.</div>
+          } @else if (hasError('developer', 'maxlength')) {
+            <div class="text-danger small mt-1">{{ maxLengthMessage('developer', 'Developer') }}</div>
           }
         </div>
 
@@ -75,19 +86,24 @@
           <input id="publisher" class="form-control" type="text" formControlName="publisher" />
           @if (hasError('publisher', 'required')) {
             <div class="text-danger small mt-1">Publisher is required.</div>
+          } @else if (hasError('publisher', 'maxlength')) {
+            <div class="text-danger small mt-1">{{ maxLengthMessage('publisher', 'Publisher') }}</div>
           }
         </div>
 
         <div class="col-md-4">
           <label class="form-label" for="criticScore">Critic score</label>
           <input id="criticScore" class="form-control" type="number" formControlName="criticScore" min="0" max="100" />
+          @if (hasError('criticScore', 'min') || hasError('criticScore', 'max')) {
+            <div class="text-danger small mt-1">{{ criticScoreHint }}</div>
+          }
         </div>
 
         <div class="col-12">
           <label class="form-label" for="summary">Summary</label>
           <textarea id="summary" class="form-control" rows="5" formControlName="summary"></textarea>
           @if (hasError('summary', 'maxlength')) {
-            <div class="text-danger small mt-1">Summary must be 500 characters or fewer.</div>
+            <div class="text-danger small mt-1">{{ maxLengthMessage('summary', 'Summary') }}</div>
           }
         </div>
       </div>
@@ -97,12 +113,12 @@
           @if (lastUpdatedUtc) {
             <span>Last updated {{ lastUpdatedUtc | date: 'medium' }}</span>
           } @else {
-            <span>New entries are seeded back into the browse view after save.</span>
+            <span>{{ footerMessage }}</span>
           }
         </div>
 
         <div class="d-flex gap-2">
-          @if (!isNew) {
+          @if (canDelete) {
             <button class="btn btn-outline-danger" type="button" [disabled]="saving" (click)="deleteVideoGame()">
               Delete entry
             </button>

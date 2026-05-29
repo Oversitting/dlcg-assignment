@@ -133,6 +133,6 @@ Example:
 
 ## Notes
 
-- The backend uses the local development connection string in `appsettings.Development.json`.
+- The backend connection string and CORS settings are defined in `Server/VideoGameCatalogue.Api/appsettings.json`.
 - The frontend dev server proxies `/api` requests to the backend on port `5201`.
 - A sample data migration is included so a new local database starts with catalogue entries.

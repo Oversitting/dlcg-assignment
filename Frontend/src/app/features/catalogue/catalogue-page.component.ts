@@ -86,4 +86,11 @@ export class CataloguePageComponent implements OnInit {
         },
       });
   }
+
+  protected scoreBadgeClass(score: number | null): string {
+    if (score === null || score === undefined) return 'score-badge score-badge-none';
+    if (score >= 80) return 'score-badge score-badge-high';
+    if (score >= 60) return 'score-badge score-badge-mid';
+    return 'score-badge score-badge-low';
+  }
 }

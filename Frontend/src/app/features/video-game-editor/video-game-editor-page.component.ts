@@ -68,6 +68,26 @@ export class VideoGameEditorPageComponent implements OnInit {
     return this.saving ? 'Saving...' : this.isNew ? 'Create entry' : 'Save changes';
   }
 
+  protected get canDelete(): boolean {
+    return !this.isNew && this.currentVideoGameId !== null;
+  }
+
+  protected get footerMessage(): string {
+    if (!this.isNew && this.currentVideoGameId === null) {
+      return 'Review the route or return to the catalogue.';
+    }
+
+    return 'New entries are seeded back into the browse view after save.';
+  }
+
+  protected get releaseYearHint(): string {
+    return `Release year must be between ${videoGameValidation.minReleaseYear} and ${videoGameValidation.maxReleaseYear}.`;
+  }
+
+  protected get criticScoreHint(): string {
+    return `Critic score must be between ${videoGameValidation.minCriticScore} and ${videoGameValidation.maxCriticScore}.`;
+  }
+
   ngOnInit(): void {
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
       const rawId = params.get('id');
@@ -94,6 +114,7 @@ export class VideoGameEditorPageComponent implements OnInit {
 
       const videoGameId = Number(rawId);
       if (Number.isNaN(videoGameId)) {
+        this.currentVideoGameId = null;
         this.errorMessage = 'The requested catalogue entry is invalid.';
         return;
       }
@@ -104,6 +125,11 @@ export class VideoGameEditorPageComponent implements OnInit {
   }
 
   protected save(): void {
+    if (!this.isNew && this.currentVideoGameId === null) {
+      this.errorMessage = 'The requested catalogue entry is invalid.';
+      return;
+    }
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -157,6 +183,11 @@ export class VideoGameEditorPageComponent implements OnInit {
   protected hasError(controlName: keyof VideoGameForm, errorName: string): boolean {
     const control = this.form.controls[controlName];
     return control.touched && control.hasError(errorName);
+  }
+
+  protected maxLengthMessage(controlName: keyof VideoGameForm, label: string): string {
+    const maxLength = this.form.controls[controlName].errors?.['maxlength']?.requiredLength;
+    return `${label} must be ${maxLength} characters or fewer.`;
   }
 
   private loadVideoGame(videoGameId: number): void {

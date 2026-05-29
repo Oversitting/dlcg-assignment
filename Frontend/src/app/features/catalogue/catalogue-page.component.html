@@ -115,7 +115,7 @@
     <div class="page-card overflow-hidden">
       <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">
-          <thead class="table-light">
+          <thead>
             <tr>
               <th>Title</th>
               <th>Genre</th>
@@ -141,7 +141,7 @@
                 <td>{{ videoGame.platform }}</td>
                 <td>{{ videoGame.releaseYear }}</td>
                 <td>
-                  <span class="badge rounded-pill text-bg-secondary">{{ videoGame.criticScore }}/100</span>
+                  <span [class]="scoreBadgeClass(videoGame.criticScore)">{{ videoGame.criticScore }}/100</span>
                 </td>
                 <td class="text-end">
                   <a class="btn btn-sm btn-outline-dark" [routerLink]="['/games', videoGame.id, 'edit']">Edit</a>

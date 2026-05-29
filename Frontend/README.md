@@ -1,59 +1,40 @@
-# VideoGameCatalogue
+# Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Angular frontend for the Video Game Catalogue assignment. The app has two routed pages:
+
+- `/` for browsing, filtering, ordering, and paging catalogue entries
+- `/games/new` and `/games/:id/edit` for creating and editing entries
 
 ## Development server
 
-To start a local development server, run:
+From this directory, start the app with:
 
 ```bash
-ng serve
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+This runs `ng serve` with `proxy.conf.json`, so API calls to `/api` are forwarded to `http://localhost:5201`.
 
-## Code scaffolding
+## Build
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Create a production build with:
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The output is written to `dist/video-game-catalogue/`.
+
+## Unit tests
+
+Run the Vitest-backed Angular unit tests with:
 
 ```bash
-ng generate --help
+npm test -- --watch=false
 ```
 
-## Building
+## Notes
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- The shared validation limits live in `src/app/core/config/video-game.constants.ts`.
+- Bootstrap and ng-bootstrap are used for layout, styling, and alerts.
+- No end-to-end test target is configured in `angular.json`.

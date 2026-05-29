@@ -29,7 +29,7 @@ public sealed class VideoGamesController : ControllerBase
 
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(VideoGameResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<VideoGameResponse>> GetById(
         [Range(1, int.MaxValue)] int id,
@@ -53,7 +53,7 @@ public sealed class VideoGamesController : ControllerBase
 
     [HttpPut("{id:int}")]
     [ProducesResponseType(typeof(VideoGameResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<VideoGameResponse>> Update(
         [Range(1, int.MaxValue)] int id,
@@ -66,7 +66,7 @@ public sealed class VideoGamesController : ControllerBase
 
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(
         [Range(1, int.MaxValue)] int id,
