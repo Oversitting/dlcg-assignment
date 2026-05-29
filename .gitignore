@@ -25,6 +25,7 @@ Frontend/.cache/
 # Logs and local runner output
 *.log
 .run/
+.playwright*/*
 
 # OS noise
 .DS_Store
