@@ -74,6 +74,8 @@ public static class WebApplicationExtensions
         {
             if (dbContext.Database.IsRelational())
             {
+                // Migration auto-application is used here for simplicity and demonstration purposes. 
+                // In production scenarios, consider using explicit migration application strategies to have more control over the deployment process and handle potential issues that may arise during schema changes.
                 logger.LogInformation("Applying catalogue database migrations.");
                 await dbContext.Database.MigrateAsync();
             }

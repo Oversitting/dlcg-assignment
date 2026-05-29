@@ -1,3 +1,4 @@
+using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,20 @@ using VideoGameCatalogue.Api.Implementation.Validators;
 
 namespace VideoGameCatalogue.Api.Implementation.Startup;
 
+/// <summary>
+/// Registers the API's infrastructure, application services, validation, and OpenAPI support.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
     private const string CorsOriginsSectionName = "Cors:AllowedOrigins";
 
+    /// <summary>
+    /// Adds the catalogue API services and middleware dependencies to the application service collection.
+    /// </summary>
+    /// <param name="services">The service collection being configured.</param>
+    /// <param name="configuration">The application configuration.</param>
+    /// <param name="corsPolicyName">The CORS policy name used for the frontend origin list.</param>
+    /// <returns>The same service collection for chaining.</returns>
     public static IServiceCollection AddCatalogueApi(
         this IServiceCollection services,
         IConfiguration configuration,
@@ -64,7 +75,16 @@ public static class ServiceCollectionExtensions
             };
         });
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(options =>
+        {
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+            if (File.Exists(xmlPath))
+            {
+                options.IncludeXmlComments(xmlPath);
+            }
+        });
         services.AddCors(options =>
         {
             options.AddPolicy(corsPolicyName, policy =>

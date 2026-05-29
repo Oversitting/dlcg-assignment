@@ -19,6 +19,7 @@ public sealed class VideoGameService : IVideoGameService
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
+    /// <inheritdoc />
     public async Task<PagedResponse<VideoGameResponse>> GetAllAsync(
         VideoGameBrowseRequest request,
         CancellationToken cancellationToken = default)
@@ -73,6 +74,7 @@ public sealed class VideoGameService : IVideoGameService
         return new PagedResponse<VideoGameResponse>(videoGames, totalCount, request.PageNumber, request.PageSize);
     }
 
+    /// <inheritdoc />
     public async Task<VideoGameResponse> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         var videoGame = await _dbContext.VideoGames
@@ -91,6 +93,7 @@ public sealed class VideoGameService : IVideoGameService
         return videoGame;
     }
 
+    /// <inheritdoc />
     public async Task<VideoGameResponse> CreateAsync(
         SaveVideoGameRequest request,
         CancellationToken cancellationToken = default)
@@ -110,7 +113,8 @@ public sealed class VideoGameService : IVideoGameService
 
         return Map(videoGame);
     }
-
+    
+    /// <inheritdoc />
     public async Task<VideoGameResponse> UpdateAsync(
         int id,
         SaveVideoGameRequest request,
@@ -139,6 +143,7 @@ public sealed class VideoGameService : IVideoGameService
         return Map(videoGame);
     }
 
+    /// <inheritdoc />
     public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
         var videoGame = await _dbContext.VideoGames.SingleOrDefaultAsync(item => item.Id == id, cancellationToken);
