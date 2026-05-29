@@ -113,7 +113,7 @@ public sealed class VideoGameService : IVideoGameService
 
         return Map(videoGame);
     }
-    
+
     /// <inheritdoc />
     public async Task<VideoGameResponse> UpdateAsync(
         int id,

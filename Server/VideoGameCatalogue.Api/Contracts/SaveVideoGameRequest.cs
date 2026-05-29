@@ -3,7 +3,7 @@ namespace VideoGameCatalogue.Api.Contracts;
 /// <summary>
 /// Represents the request body used to create or update a catalogue entry.
 /// </summary>
-public sealed class SaveVideoGameRequest
+public sealed record SaveVideoGameRequest
 {
     /// <summary>
     /// Gets the display title of the video game.

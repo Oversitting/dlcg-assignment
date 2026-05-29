@@ -1,11 +1,11 @@
-namespace VideoGameCatalogue.Api.Contracts;
-
 using VideoGameCatalogue.Api.Implementation.Models;
+
+namespace VideoGameCatalogue.Api.Contracts;
 
 /// <summary>
 /// Represents the query string parameters used to browse catalogue entries.
 /// </summary>
-public sealed class VideoGameBrowseRequest
+public sealed record VideoGameBrowseRequest
 {
     /// <summary>
     /// Gets the free-text term matched against title, developer, and publisher.
