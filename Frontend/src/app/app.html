@@ -1,0 +1,28 @@
+<div class="app-shell">
+  <header class="app-header">
+    <div class="container-xl d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+      <div>
+        <p class="eyebrow mb-1">Interview Assignment</p>
+        <a class="brand" routerLink="/">Video Game Catalogue</a>
+      </div>
+
+      <nav class="nav nav-pills gap-2">
+        <a
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Browse
+        </a>
+        <a class="nav-link" routerLink="/games/new" routerLinkActive="active">Add Entry</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-content">
+    <div class="container-xl py-4 py-lg-5">
+      <router-outlet />
+    </div>
+  </main>
+</div>

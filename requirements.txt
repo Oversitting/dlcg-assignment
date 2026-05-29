@@ -1,0 +1,15 @@
+Build a simple two-page catalogue for Video Games. The first page is for browsing, the second page is for editing
+an entry.
+Emphasis should be on code clarity and demonstration on use of language/framework. Focus should not be on UI
+(we have a designer).
+
+Back End
+▪ ASP.NET Core
+▪ EF Core (SQL Server, Express is free/fine). Use Code First, not DB First and not Model First
+▪ SSL and Auth is not required
+▪ For bonus points the demo project should include Unit Testing.
+
+Front End
+▪ Bootstrap / ng-bootstrap https://ng-bootstrap.github.io
+▪ Angular (latest)
+▪ Angular Router

@@ -1,0 +1,63 @@
+@use 'bootstrap/scss/bootstrap';
+
+:root {
+	--catalogue-ink: #243336;
+	--catalogue-muted: #6d7a78;
+	--catalogue-accent: #a34d2d;
+	--catalogue-accent-soft: #d8b18a;
+	--catalogue-surface: rgba(255, 255, 255, 0.82);
+}
+
+html,
+body {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	color: var(--catalogue-ink);
+	background:
+		radial-gradient(circle at top left, rgba(163, 77, 45, 0.12), transparent 32%),
+		linear-gradient(180deg, #f8f6f1 0%, #efe8dd 100%);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+.page-shell {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.page-card {
+	background: var(--catalogue-surface);
+	border: 1px solid rgba(38, 52, 52, 0.08);
+	border-radius: 1.25rem;
+	box-shadow: 0 24px 60px rgba(36, 51, 54, 0.08);
+}
+
+.page-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: end;
+}
+
+.page-title {
+	margin: 0;
+	font-size: clamp(2rem, 3vw, 3.2rem);
+	font-weight: 700;
+	letter-spacing: -0.05em;
+}
+
+.page-subtitle {
+	margin: 0.5rem 0 0;
+	max-width: 52rem;
+	color: var(--catalogue-muted);
+}

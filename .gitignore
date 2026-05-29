@@ -1,0 +1,42 @@
+# Build output
+bin/
+obj/
+dist/
+out/
+TestResults/
+
+# .NET / Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+# Node / Angular
+Frontend/node_modules/
+Frontend/.angular/
+Frontend/.sass-cache/
+Frontend/coverage/
+Frontend/.cache/
+
+# Logs and local runner output
+*.log
+.run/
+
+# OS noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*

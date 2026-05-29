@@ -1,0 +1,31 @@
+@VideoGameCatalogue.Api_HostAddress = http://localhost:5201
+
+GET {{VideoGameCatalogue.Api_HostAddress}}/api/video-games?pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+GET {{VideoGameCatalogue.Api_HostAddress}}/api/video-games/1
+Accept: application/json
+
+###
+
+POST {{VideoGameCatalogue.Api_HostAddress}}/api/video-games
+Content-Type: application/json
+
+{
+	"title": "Metaphor: ReFantazio",
+	"genre": "RPG",
+	"platform": "PC",
+	"releaseYear": 2024,
+	"developer": "Studio Zero",
+	"publisher": "Sega",
+	"criticScore": 92,
+	"summary": "A fantasy role-playing game from Atlus veterans."
+}
+
+###
+
+DELETE {{VideoGameCatalogue.Api_HostAddress}}/api/video-games/1
+
+###
