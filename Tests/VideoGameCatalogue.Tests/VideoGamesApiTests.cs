@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using VideoGameCatalogue.Api;
@@ -96,6 +97,7 @@ public sealed class VideoGamesApiTests
         {
             builder.ConfigureServices(services =>
             {
+                services.RemoveAll(typeof(IDbContextOptionsConfiguration<CatalogueDbContext>));
                 services.RemoveAll<DbContextOptions<CatalogueDbContext>>();
                 services.RemoveAll<CatalogueDbContext>();
 

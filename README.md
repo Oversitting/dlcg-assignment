@@ -19,9 +19,9 @@ The application includes:
 
 ## Tech Stack
 
-- .NET 8
+- .NET 10
 - ASP.NET Core Web API
-- EF Core 8 with SQL Server
+- EF Core 10 with SQL Server
 - Angular 21
 - Bootstrap 5 and ng-bootstrap
 - xUnit and EF Core InMemory for backend tests
@@ -38,7 +38,7 @@ The application includes:
 
 ## Prerequisites
 
-- .NET SDK 8+
+- .NET SDK 10+
 - Node.js and npm
 - SQL Server LocalDB available on Windows for the default local configuration
 
